@@ -46,8 +46,8 @@ jobs:
       - name: Update Server
         uses: fifsky/ssh-action@master
         with:
-          hosts: ${{ secrets.HOST }}
+          host: ${{ secrets.HOST }}
           user: root
-          pwd: ${{ secrets.PWD }}
+          pass: ${{ secrets.PWD }}
           commands: sh /root/prod/double-official/start-docker.sh
 
