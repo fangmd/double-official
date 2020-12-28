@@ -16,5 +16,7 @@ LICENSE
 .github
 .nuxt
 
+*.md
+
 # sh
 *.sh
