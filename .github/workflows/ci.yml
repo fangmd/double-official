@@ -42,12 +42,10 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
-      
-      - name: Update Server
-        uses: fifsky/ssh-action@master
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
         with:
-          host: ${{ env.HOST }}
-          user: root
-          pass: ${{ env.PWD }}
-          commands: sh /root/prod/double-official/start-docker.sh
-
+          host: ${{ secrets.HOST }}
+          username: root
+          password: ${{ secrets.PWD }}
+          script: /root/prod/double-official/start-docker.sh
