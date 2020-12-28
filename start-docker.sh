@@ -2,6 +2,10 @@
 
 # 启动脚本
 
+echo "Git Pull"
+
+git pull &&
+
 echo "start docker"
 
 docker build -t pnuxt-pc . &&

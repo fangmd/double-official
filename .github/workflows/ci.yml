@@ -42,3 +42,12 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
+      
+      - name: Update Server
+        uses: fifsky/ssh-action@master
+        with:
+          hosts: ${{ secrets.HOST }}
+          user: root
+          pwd: ${{ secrets.PWD }}
+          commands: sh /root/prod/double-official/start-docker.sh
+
