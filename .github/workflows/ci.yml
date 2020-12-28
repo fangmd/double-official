@@ -42,10 +42,10 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: root
-          password: ${{ secrets.PWD }}
-          script: /root/prod/double-official/start-docker.sh
+      # - name: executing remote ssh commands using password
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: root
+      #     password: ${{ secrets.PWD }}
+      #     script: /root/prod/double-official/start-docker.sh
