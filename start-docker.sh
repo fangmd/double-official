@@ -14,8 +14,8 @@ if [ -n "$container" ]; then
     docker container rm $container
 
     echo "start container"
-    docker run --name pnuxt-pc -d -p  3010:3010 pnuxt-pc
+    docker run --name pnuxt-pc -d -p  3020:3020 pnuxt-pc
 else
     echo "start container"
-    docker run --name pnuxt-pc -d -p  3010:3010 pnuxt-pc  
+    docker run --name pnuxt-pc -d -p  3020:3020 pnuxt-pc  
 fi
