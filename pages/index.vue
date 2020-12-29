@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">Double</h1>
-    </div>
+  <div class="container-xxl">
+    <header>
+      <span class="badge bg-light text-dark home-tag">工具箱</span>
+      <span class="badge bg-secondary text-dark home-tag">占位</span>
+    </header>
   </div>
 </template>
 
@@ -18,6 +18,14 @@ export default {
 <style lang="less" scoped>
 .title {
   color: green;
+}
+
+header {
+  text-align: center;
+
+  .home-tag {
+    cursor: pointer;
+  }
 }
 </style>
 
