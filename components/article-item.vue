@@ -11,7 +11,9 @@
         >
       </p>
       <p class="time">
-        创建时间：{{ article.createTime }} 更新时间：{{ article.updateTime }}
+        创建时间：{{ article.createTime | formateServerTime }} 更新时间：{{
+          article.updateTime | formateServerTime
+        }}
       </p>
       <!-- todo: tags -->
     </div>
@@ -42,7 +44,8 @@ export default {
 .article-item {
   color: #212529;
   display: block;
-  padding: 10px 0;
+  margin: 10px 0;
+  padding: 10px;
 
   .title {
     font-weight: bold;
@@ -52,6 +55,10 @@ export default {
   .time {
     font-size: 14px;
     padding: 10px 0;
+  }
+
+  &:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
 }
 </style>

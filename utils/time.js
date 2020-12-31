@@ -18,3 +18,12 @@ export const timeFormateS = (tss) => {
   // console.log(d);
   return d.format('YYYY-M-D HH:mm:ss') // 'yyyy-M-D HH:mm:ss'
 }
+
+/**
+ * 返回显示的时间
+ * @param {string} serverTime 服务器接口返回的时间
+ */
+export const formateServerTime = (serverTime) => {
+  const d = dayjs(serverTime)
+  return d.format('YYYY-M-D HH:mm:ss') // 'yyyy-M-D HH:mm:ss'
+}

@@ -16,10 +16,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/css/base.less'],
+  css: ['~/assets/css/base.less', 'github-markdown-css/github-markdown.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/axios'],
+  plugins: ['~/plugins/axios', '~plugins/filters.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -40,7 +40,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'http://localhost:3021',
+    // baseURL: 'http://localhost:3021',
+    baseURL: 'https://api.fangmingdong.com',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
