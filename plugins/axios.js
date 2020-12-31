@@ -13,7 +13,6 @@ export default function ({ $axios, redirect }) {
 
   // 请求结果拦截
   $axios.onResponse((res) => {
-    console.log('response')
     // console.log(res)
     return res
   })

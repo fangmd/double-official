@@ -1,17 +1,50 @@
 <template>
-  <div class="container-xxl">
+  <div class="page-root container-lg">
     <header>
-      <span class="badge bg-light text-dark home-tag">工具箱</span>
-      <span class="badge bg-secondary text-dark home-tag">占位</span>
+      <span
+        v-for="(item, index) in categories"
+        :key="index"
+        class="badge bg-light text-dark home-tag"
+        >{{ item.name }}</span
+      >
+      <!-- <span class="badge bg-secondary text-dark home-tag">占位</span> -->
     </header>
+    <section>
+      <article-item
+        v-for="(item, index) in articles"
+        :key="index"
+        :article="item"
+      ></article-item>
+    </section>
+    <m-footer></m-footer>
   </div>
 </template>
 
 <script>
+import { getCategories, getArticles } from '@/apis/blog'
+import MFooter from '@/components/mfooter'
+import ArticleItem from '@/components/article-item'
+
+/**
+ * 首页
+ */
 export default {
-  mounted() {
-    console.log(process.env.NODE_ENV)
+  components: { MFooter, ArticleItem },
+  async asyncData({ $axios }) {
+    const ret = await getCategories($axios)
+    const articleRet = await getArticles($axios)
+    for (const item of articleRet.data.list) {
+      item.tagsArr = item.tags && item.tags.split(',')
+    }
+    return { categories: ret.data.list, articles: articleRet.data.list }
   },
+  data() {
+    return {
+      categories: [],
+      articles: [],
+    }
+  },
+  mounted() {},
   methods: {},
 }
 </script>
@@ -20,44 +53,19 @@ export default {
   color: green;
 }
 
-header {
-  text-align: center;
-
-  .home-tag {
-    cursor: pointer;
-  }
-}
-</style>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+.page-root {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  flex-direction: column;
+  header {
+    padding: 20px 0;
+    text-align: center;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+    .home-tag {
+      cursor: pointer;
+    }
+  }
+  section {
+    flex: 1;
+  }
 }
 </style>
