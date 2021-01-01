@@ -5,7 +5,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Double' },
+      { name: 'keywords', content: 'fangmingdong, blog' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
@@ -40,8 +41,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    // baseURL: 'http://localhost:3021',
-    baseURL: 'https://api.fangmingdong.com',
+    baseURL: 'http://localhost:3021',
+    // baseURL: 'https://api.fangmingdong.com',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

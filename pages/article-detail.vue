@@ -1,8 +1,13 @@
 /* eslint-disable vue/no-v-html */
 <template>
   <div class="page-root container-lg">
-    <div class="title">
-      {{ article.title }}
+    <div class="article-header">
+      <p class="title">{{ article.title }}</p>
+      <p class="time">
+        创建时间：{{ article.createTime | formateServerTime }} 更新时间：{{
+          article.updateTime | formateServerTime
+        }}
+      </p>
     </div>
     <div class="tags">
       <span
@@ -13,6 +18,7 @@
       >
     </div>
     <markdown-content :md-content="article.content"></markdown-content>
+    <div id="SOHUCS" :sid="article.id"></div>
   </div>
 </template>
 
@@ -37,6 +43,9 @@ export default {
       article: {},
     }
   },
+  head: {
+    script: [{ src: '/comment.js', body: true }],
+  },
 }
 </script>
 
@@ -45,11 +54,19 @@ export default {
   padding-top: 20px;
   padding-bottom: 20px;
 
-  .title {
+  .article-header {
     padding: 20px 0;
-    font-size: 26px;
-    font-weight: bold;
+    .title {
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .time {
+      font-size: 14px;
+      padding: 10px 0;
+      color: #212529;
+    }
   }
+
   .tags {
     padding: 10px 0;
   }

@@ -4,7 +4,11 @@
       <a
         v-for="(item, index) in categories"
         :key="index"
-        class="badge bg-light text-dark home-tag"
+        class="badge text-dark home-tag"
+        :class="{
+          'bg-secondary': category === item.name,
+          'bg-light': category !== item.name,
+        }"
         :href="getTagUrl(item)"
         replace
         >{{ item.name }}</a
@@ -26,6 +30,11 @@
         :article="item"
       ></article-item>
     </section>
+    <m-pagination
+      :total-cnt="totalCnt"
+      :page="page"
+      :size="size"
+    ></m-pagination>
     <m-footer></m-footer>
   </div>
 </template>
@@ -34,19 +43,22 @@
 import { getCategories, getArticles } from '@/apis/blog'
 import MFooter from '@/components/mfooter'
 import ArticleItem from '@/components/article-item'
+import MPagination from '@/components/m-pagination'
 
 /**
  * 首页
  */
 export default {
-  components: { MFooter, ArticleItem },
+  components: { MFooter, ArticleItem, MPagination },
   async asyncData({ route, $axios }) {
-    let { category } = route.query
-    if (category === '全部') {
-      category = ''
+    const { category } = route.query
+    const { page = 1, size = 10 } = route.query
+    let queryCategory = category
+    if (queryCategory === '全部') {
+      queryCategory = ''
     }
     const ret = await getCategories($axios)
-    const articleRet = await getArticles($axios, { category })
+    const articleRet = await getArticles($axios, { queryCategory, page, size })
     for (const item of articleRet.data.list) {
       item.tagsArr = item.tags && item.tags.split(',')
     }
@@ -55,22 +67,35 @@ export default {
       categories: arr.concat(ret.data.list),
       articles: articleRet.data.list,
       category,
+      totalCnt: articleRet.data.totalCnt,
+      page: parseInt(page),
     }
   },
   data() {
     return {
-      category: '',
+      category: '全部',
       categories: [],
       articles: [],
+      totalCnt: 0,
+      page: 0,
+      size: 10,
     }
   },
   mounted() {},
   methods: {
     getTagUrl(item) {
-      return `/?category=${item.name}`
-    },
-    refresh(tagName) {
-      console.log(tagName)
+      const q = { ...this.$route.query }
+      q.category = item.name
+      q.page = 1
+      let queryStr = ''
+      for (const i in q) {
+        if (queryStr) {
+          queryStr = `${queryStr}&${i}=${q[i]}`
+        } else {
+          queryStr = `${i}=${q[i]}`
+        }
+      }
+      return `/?${queryStr}`
     },
   },
 }
