@@ -8,9 +8,9 @@ git pull &&
 
 echo "start docker"
 
-docker build -t pnuxt-pc . &&
+docker build -t double-official . &&
 
-container=$(docker container ls -aqf "name=pnuxt-pc")
+container=$(docker container ls -aqf "name=double-official")
 
 if [ -n "$container" ]; then
     echo "stop container and rm container"
@@ -18,8 +18,8 @@ if [ -n "$container" ]; then
     docker container rm $container
 
     echo "start container"
-    docker run --name pnuxt-pc -d -p  3020:3020 pnuxt-pc
+    docker run --name double-official -d -p  3020:3020 double-official
 else
     echo "start container"
-    docker run --name pnuxt-pc -d -p  3020:3020 pnuxt-pc  
+    docker run --name double-official -d -p  3020:3020 double-official  
 fi
