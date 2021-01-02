@@ -51,14 +51,19 @@ import MPagination from '@/components/m-pagination'
 export default {
   components: { MFooter, ArticleItem, MPagination },
   async asyncData({ route, $axios }) {
-    const { category } = route.query
+    let { category } = route.query
+    category = category || '全部'
     const { page = 1, size = 10 } = route.query
     let queryCategory = category
     if (queryCategory === '全部') {
       queryCategory = ''
     }
     const ret = await getCategories($axios)
-    const articleRet = await getArticles($axios, { queryCategory, page, size })
+    const articleRet = await getArticles($axios, {
+      category: queryCategory,
+      page,
+      size,
+    })
     for (const item of articleRet.data.list) {
       item.tagsArr = item.tags && item.tags.split(',')
     }

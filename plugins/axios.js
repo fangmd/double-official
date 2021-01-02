@@ -8,7 +8,11 @@ export default function ({ $axios, redirect }) {
   // 请求拦截
   $axios.onRequest((config) => {
     // console.log(config)
-    console.log('Making request to ' + config.url)
+    console.log(
+      `request: ${config.baseURL}${config.url} ${
+        config.method
+      } ${JSON.stringify(config.params)}`
+    )
   })
 
   // 请求结果拦截

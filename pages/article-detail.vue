@@ -55,7 +55,7 @@ export default {
   padding-bottom: 20px;
 
   .article-header {
-    padding: 20px 0;
+    // padding: 20px 0;
     .title {
       font-size: 26px;
       font-weight: bold;
@@ -68,7 +68,7 @@ export default {
   }
 
   .tags {
-    padding: 10px 0;
+    padding: 10px 0 30px;
   }
 }
 </style>
