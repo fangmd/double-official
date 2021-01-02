@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
 
 # Copy files to image
-COPY ["./package.json", "./package-lock.json", "nuxt.config.js", "/usr/src/nuxt-app/"]
+COPY ["./package.json", "./package-lock.json", "/usr/src/nuxt-app/"]
 
 # run npm install before copy ./src can help you cache images
 RUN npm install
