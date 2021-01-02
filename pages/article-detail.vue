@@ -44,7 +44,7 @@ export default {
     }
   },
   head: {
-    script: [{ src: '/comment.js', body: true }],
+    script: [{ src: '/comment.js', body: true, defer: true }],
   },
 }
 </script>
