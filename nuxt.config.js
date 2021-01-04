@@ -13,6 +13,18 @@ export default {
       {
         src: '/baidu.js',
       },
+      // {
+      //   src: 'https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js',
+      //   body: true,
+      // },
+      // {
+      //   src: 'https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js',
+      //   body: true,
+      // },
+      // {
+      //   src: '/firebase.js',
+      //   body: true,
+      // },
     ],
   },
 
