@@ -14,8 +14,8 @@ container=$(docker container ls -aqf "name=double-official1")
 
 if [ -n "$container" ]; then
     echo "stop container and rm container"
-    docker container stop $container
-    docker container rm $container
+    docker container stop $container &&
+    docker container rm $container &&
 
     echo "start container"
     docker run --name double-official1 -d -p  3020:3020 double-official1
