@@ -35,7 +35,9 @@ export default {
   async asyncData({ route, $axios }) {
     const { id } = route.query
     const ret = await getArticle($axios, { id })
-    ret.data.tagsArr = ret.data.tags.split(',')
+    if (ret.data.tags) {
+      ret.data.tagsArr = ret.data.tags.split(',')
+    }
     return { article: ret.data }
   },
   data() {
@@ -44,7 +46,10 @@ export default {
     }
   },
   head: {
-    script: [{ src: '/comment.js', body: true, defer: true }],
+    script: [
+      { src: '/comment.js', body: true },
+      // { src: '/test.js', body: true },
+    ],
   },
 }
 </script>

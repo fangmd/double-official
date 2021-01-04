@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="detailUrl" class="article-item">
+  <a class="article-item" :href="detailUrl">
     <div>
       <p class="title">{{ article.title }}</p>
       <p>
@@ -17,7 +17,7 @@
       </p>
       <!-- todo: tags -->
     </div>
-  </NuxtLink>
+  </a>
 </template>
 
 <script>
