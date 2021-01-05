@@ -54,6 +54,7 @@ export default {
   },
   head() {
     return {
+      title: this.article.title,
       meta: [
         {
           hid: 'description',
