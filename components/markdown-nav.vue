@@ -68,9 +68,11 @@ export default {
       return node
     },
     getTitle(l) {
+      if (!l) return ''
       return l.substring(l.indexOf('>') + 1, l.lastIndexOf('<'))
     },
     getTagContent(l) {
+      if (!l) return ''
       return l.substring(l.indexOf('=') + 1, l.indexOf('>')).replaceAll('"', '')
     },
   },
