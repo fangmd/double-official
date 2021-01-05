@@ -52,11 +52,24 @@ export default {
       article: {},
     }
   },
-  head: {
-    script: [
-      { src: '/comment.js', body: true },
-      // { src: '/test.js', body: true },
-    ],
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.article.title}`,
+        },
+        {
+          name: 'keywords',
+          content: `${this.article.title},${this.article.tags}`,
+        },
+      ],
+      script: [
+        { src: '/comment.js', body: true },
+        // { src: '/test.js', body: true },
+      ],
+    }
   },
 }
 </script>
