@@ -73,7 +73,9 @@ export default {
     },
     getTagContent(l) {
       if (!l) return ''
-      return l.substring(l.indexOf('=') + 1, l.indexOf('>')).replaceAll('"', '')
+      console.log(l)
+      console.log(l.substring(l.indexOf('=') + 1, l.indexOf('>')))
+      return l.substring(l.indexOf('=') + 1, l.indexOf('>')).replace('/"/g', '')
     },
   },
 }
